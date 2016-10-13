@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>blog</title>
+	<meta name="description" content="Free Responsive Html5 Css3 Templates Designed by Kimmy | zerotheme.com">
+	<meta name="author" content="sc.chinaz.com">
+	<script type="text/javascript" src="public/js/jquery.min.js"></script>
+<script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+<link href="public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<style type="text/css">
+.input-border {
+	border:5px solid #ECECEC;
+}
+
+</style>
+    <!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- CSS
+  ================================================== -->
+  	<link rel="stylesheet" href="public/css/zerogrid.css">
+	<link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/responsive.css">
+	
+	<!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+		<script src="js/html5.js"></script>
+		<script src="js/css3-mediaqueries.js"></script>
+	<![endif]-->
+	
+	<link href='./images/favicon.ico' rel='icon' type='image/x-icon'/>
+</head>
+<body>
+<div id = 'ddiv' style="position:fixed; width:100px;height:100px; z-index:100;right:20px;bottom:400px;">
+	<img  src='qrcode.png'/>
+	<h5>扫一扫有惊喜哦！</h5>
+
+</div>
+
+<div class="wrap-body">
+<!--------------Header--------------->
+<header>
+	<div class="wrap-header zerogrid">
+		<div id="logo"><a href="http://sc.chinaz.com"><img src="./images/logo.png"/></a></div>
+		<nav>
+			<div class="wrap-nav">
+				<div class="menu">
+					<ul>
+						<li><a href="index.php">首页</a></li>
+						{if $user eq ''}
+						<li><a href="{url arg='admin/login'}">登录</a></li>
+						{else}
+						<li><a href="{url arg='admin/logOut'}">退出</a></li>
+						{/if}
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+</header>
+
+<!--------------Content--------------->
+<section id="content">
+	<div class="wrap-content zerogrid">
+		<div class="row block">
+			<div id="main-content" class="col-2-3">
+				<div class="row">
+					<div class="col-full">
+						<div class="wrap-col">
+							<article>
+								<div class="heading"><h2 class="title"><a href="{url arg='index/detail/id/'}{$firstArticle['id']}">{$firstArticle['title']}</a></h2></div>
+								<img src="{$firstArticle['imagepath']}"/>
+								<div class="content">
+									<p>
+										{$firstArticle['content']}
+                  </p>
+								</div>
+								<div class="extra">
+									<div class="info">By {$firstArticle['uid']} on {'Y-m-d'|date:$firstArticle['dateline']} - <a href="#">{$firstArticle['comments']} Commnets</a></div>
+									<div class="more"><a class="button" href="{url arg='index/detail/id/'}{$firstArticle['id']}">Read more >></a></div>
+									<div class="clear"></div>
+								</div>
+							</article>
+						</div>
+					</div>
+				</div>
+				{foreach $firstFourArticle as $item}
+				{if $item@index is even }
+				<div class="row">
+				{/if}
+					<div class="col-1-2">
+						<div class="wrap-col">
+							<article>
+								<div class="heading"><h2 class="title2"><a href="{url arg='index/detail/id/'}{$item['id']}">{$item['title']}</a></h2></div>
+								<img src="{$item['imagepath']}"/>
+								<div class="extra">
+									<div class="info"><a href="#">{$item['comments']} Commnets</a></div>
+									<div class="more"><a class="button" href="{url arg='index/detail/id/'}{$item['id']}">Read more >></a></div>
+									<div class="clear"></div>
+								</div>
+							</article>
+						</div>
+					</div>
+				
+				{if $item@index is odd || $item@last}
+				</div>
+				{/if}
+				{/foreach}
+				
+			</div>
+			<div id="sidebar" class="col-1-3">
+				<div class="wrap-col">
+					<div class="box">
+						<div class="heading"><h4 class="title">Search By Title</h4></div>
+						<div class="content">
+							<div class="connect">
+							<form class="form-search form-inline" method="post" action="{url arg='index/serachByTitle'}">
+				      <input name="title" class="input-medium search-query input-border" type="text" /> <button type="submit" class="btn">查找</button>
+			       </form>
+			      </div>
+						</div>
+					</div>
+					<div class="box">
+						<div class="heading"><h4 class="title">Popular Article</h4></div>
+						<div class="content">
+							<div class="post">
+								<img src="{$topArticle[0]['imagepath']}"/>
+								<h5 class="title"><a href="{url arg='index/detail/id/'}{$topArticle[0]['id']}">{$topArticle[0]['title']}</a></h5>
+							</div>
+							<div class="post last">
+								<img src="{$topArticle[1]['imagepath']}"/>
+								<h5 class="title"><a href="{url arg='index/detail/id/'}{$topArticle[1]['id']}">{$topArticle[1]['title']}</a></h5>
+							</div>
+						</div>
+					</div>
+					<div class="box">
+						<div class="heading"><h4 class="title">Categories</h4></div>
+						<div class="content">
+							<ul>
+							{foreach $topArticle as $item}
+								<li><a href="http://sc.chinaz.com">{$item['title']}</a></li>
+							{/foreach}
+							</ul>
+						</div>
+					</div>
+					<div class="box">
+						<div class="heading"><h4 class="title">Random Post</h4></div>
+						<div class="content">
+						{foreach $messageArticle as $title}
+							<div class="post">
+								<img src="{$title['imagepath']}" width="50px"/>
+								<h5 class="title"><a href="{url arg='index/detail/id/'}{$title['id']}">{$title['title']}</a></h5>
+								<p>{'Y-m-d'|date:$title['dateline']}</p>
+							</div>
+						{/foreach}
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--------------Footer--------------->
+<footer>
+	<div class="wrap-footer zerogrid">
+		<div class="row">
+			<div class="col-1-3">
+				<div class="wrap-col">
+					<div class="box">
+						<div class="heading"><h4 class="title">Image Gallery</h4></div>
+						<div class="content gallery">
+						{foreach $firstFourArticle as $item}
+							<a href="#"><img src="{$item['imagepath']}" width="120"/></a>
+						{/foreach}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1-3">
+				<div class="wrap-col">
+					<div class="box">
+						<div class="heading"><h4 class="title">About Me</h4></div>
+						<div class="content">
+							<a href="http://lytx2070.cn" target="_blank"><img src="images/zerotheme.png" style="border: 0px; margin: 10px 0;"/></a>
+							<p> 
+							I like to make friends with the world, but I am a little bit introverted, all want to know everyone through the blog!
+              </p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1-3">
+				<div class="wrap-col">
+					<div class="box">
+						<div class="heading"><h4 class="title">Contact Me</h4></div>
+						<div class="content">
+							<p>Make friends all over the world.</p>
+							<p>Website : <a href="http://lytx2070.cn" target="_blank">龙游天下</a></p>
+							<p>+1 (phone) 15820067066 <br/> +1 (qq) 2017537440</p>
+							<p>Address: Have a guess</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="copyright">
+		<p>&copy; Copyright &copy; {'Y'|date}.Company 龙游天下 All rights reserved.</p>
+	</div>
+</footer>
+
+</div>
+</body></html>

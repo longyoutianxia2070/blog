@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>chinaz</title>
+	<meta name="description" content="Free Responsive Html5 Css3 Templates Designed by Kimmy | zerotheme.com">
+	<meta name="author" content="sc.chinaz.com">
+	<script type="text/javascript" src="public/js/jquery.min.js"></script>
+<script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+<link href="public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<style type="text/css">
+.input-border {
+	border:5px solid #ECECEC;
+}
+
+</style>
+    <!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- CSS
+  ================================================== -->
+  	<link rel="stylesheet" href="public/css/zerogrid.css">
+	<link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/responsive.css">
+	
+	<!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+		<script src="js/html5.js"></script>
+		<script src="js/css3-mediaqueries.js"></script>
+	<![endif]-->
+	
+	<link href='./images/favicon.ico' rel='icon' type='image/x-icon'/>
+    
+</head>
+<body>
+<div class="wrap-body">
+<!--------------Header--------------->
+<header>
+	<div class="wrap-header zerogrid">
+		<div id="logo"><a href="http://sc.chinaz.com"><img src="./images/logo.png"/></a></div>
+		<nav>
+			<div class="wrap-nav">
+				<div class="menu">
+					<ul>
+						<li><a href="index.php">返回首页</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+</header>
+
+<!--------------Content--------------->
+<section id="content">
+	<div class="wrap-content zerogrid">
+		<div class="row block">
+			<div id="main-content" class="col-2-3">
+				<div class="row">
+					<div class="col-full">
+						<div class="wrap-col">
+							<article>
+								<div class="heading"><h1 class="title"><a href="#">{$firstArticle['title']}</a></h2></div>
+								<img src="{$firstArticle['imagepath']}"/>
+								<div class="content">
+									{$firstArticle['content']}
+									</div>
+								<div class="extra">
+									<div class="info">By {$firstArticle['uid']} on {$firstArticle['dateline']} - <a href="#">{$firstArticle['comments']} Commnets</a></div>
+									<div class="clear"></div>
+								</div>
+								
+								<div id="comment">
+									<h3>Leave a Comment</h3>
+									
+									<form id="contact-form" method="post">
+									    <fieldset>
+									        <label><input name="email" value="Email" onBlur="if(this.value=='') this.value='Email'" onFocus="if(this.value =='Email' ) this.value=''" /></label>
+									        <label><input name="subject" value="Subject" onBlur="if(this.value=='') this.value='Subject'" onFocus="if(this.value =='Subject' ) this.value=''" /></label>
+									        <textarea onBlur="if(this.value=='') this.value='Message'" onFocus="if(this.value =='Message' ) this.value=''">Message</textarea>
+									        <div class="buttons">
+									            <a href="#" onClick="document.getElementById('contact-form').reset()">Clear</a>
+									            <a href="#" onClick="document.getElementById('contact-form').submit()">Send</a>
+									        </div>											
+									    </fieldset>           
+									</form>
+								</div>
+								
+							</article>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="sidebar" class="col-1-3">
+				<div class="wrap-col">
+					<div class="box">
+						<div class="heading"><h4 class="title">Search By Title</h4></div>
+						<div class="content">
+							<div class="connect">
+							<form class="form-search form-inline">
+				      <input class="input-medium search-query input-border" type="text" /> <button type="submit" class="btn">查找</button>
+			       </form>
+			      </div>
+						</div>
+					</div>
+					<div class="box">
+						<div class="heading"><h4 class="title">Popular Article</h4></div>
+						<div class="content">
+							<div class="post">
+								<img src="{$topArticle[0]['imagepath']}"/>
+								<h5 class="title"><a href="#">{$topArticle[0]['title']}</a></h5>
+							</div>
+							<div class="post last">
+								<img src="{$topArticle[1]['imagepath']}"/>
+								<h5 class="title"><a href="#">{$topArticle[1]['title']}</a></h5>
+							</div>
+						</div>
+					</div>
+					<div class="box">
+						<div class="heading"><h4 class="title">ABOUT ME</h4></div>
+						<div class="content">
+							<ul>
+							{foreach $topArticle as $item}
+								<li><a href="http://sc.chinaz.com">{$item['title']}</a></li>
+							{/foreach}
+							</ul>
+						</div>
+					</div>
+					<div class="box">
+						<div class="heading"><h4 class="title">Most in the message</h4></div>
+						<div class="content">
+							{foreach $messageArticle as $title}
+							<div class="post">
+								<img src="{$title['imagepath']}" width="50px"/>
+								<h5 class="title"><a href="{url arg='index/detail/id/'}{$title['id']}">{$title['title']}</a></h5>
+								<p>{'Y-m-d'|date:$title['dateline']}</p>
+							</div>
+						{/foreach}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--------------Footer--------------->
+<footer>
+	<div class="wrap-footer zerogrid">
+		<div class="row">
+			<div class="col-1-3">
+				<div class="wrap-col">
+					<div class="box">
+						<div class="heading"><h4 class="title">Image Gallery</h4></div>
+						<div class="content gallery">
+						{foreach $firstFourArticle as $item}
+							<a href="#"><img src="{$item['imagepath']}" width="120"/></a>
+						{/foreach}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1-3">
+				<div class="wrap-col">
+					<div class="box">
+						<div class="heading"><h4 class="title">About Me</h4></div>
+						<div class="content">
+							<a href="http://lytx2070.cn" target="_blank"><img src="images/zerotheme.png" style="border: 0px; margin: 10px 0;"/></a>
+							<p> 
+							I like to make friends with the world, but I am a little bit introverted, all want to know everyone through the blog!
+              </p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1-3">
+				<div class="wrap-col">
+					<div class="box">
+						<div class="heading"><h4 class="title">Contact Me</h4></div>
+						<div class="content">
+							<p>Make friends all over the world.</p>
+							<p>Website : <a href="http://lytx2070.cn" target="_blank">龙游天下</a></p>
+							<p>+1 (phone) 15820067066 <br/> +1 (qq) 2017537440</p>
+							<p>Address: Have a guess</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="copyright">
+		<p>&copy; Copyright &copy; {'Y'|date}.Company 龙游天下 All rights reserved.</p>
+	</div>
+</footer>
+
+</div>
+</body></html>

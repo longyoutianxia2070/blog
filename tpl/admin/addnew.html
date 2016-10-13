@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>blog</title>
+	<meta name="description" content="Free Responsive Html5 Css3 Templates Designed by Kimmy | zerotheme.com">
+	<meta name="author" content="sc.chinaz.com">
+	
+    <!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+
+<script type="text/javascript" src="public/js/jquery.min.js"></script>
+<script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="public/js/jquery.treetable.css"></script>
+<script type="text/javascript" src="public/js/jquery.treetable-ajax-persist.js"></script>
+<script type="text/javascript" src="public/js/blanket.min.js"></script>
+<script type="text/javascript" src="public/js/bootstrap-treeview.js"></script>
+<script type="text/javascript" src="public/js/qunit-1.12.0.js"></script>
+<link href="public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="public/css/custom.css" rel="stylesheet" type="text/css">
+<link href="public/css/cikonss.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.inactive').click(function(){
+		if($(this).siblings('ul').css('display')=='none'){
+			$(this).parent('li').siblings('li').removeClass('inactives');
+			$(this).addClass('inactives');
+			$(this).siblings('ul').slideDown(100).children('li');
+			if($(this).parents('li').siblings('li').children('ul').css('display')=='block'){
+				$(this).parents('li').siblings('li').children('ul').parent('li').children('a').removeClass('inactives');
+				$(this).parents('li').siblings('li').children('ul').slideUp(100);
+
+			}
+		}else{
+			//控制自身变成+号
+			$(this).removeClass('inactives');
+			//控制自身菜单下子菜单隐藏
+			$(this).siblings('ul').slideUp(100);
+			//控制自身子菜单变成+号
+			$(this).siblings('ul').children('li').children('ul').parent('li').children('a').addClass('inactives');
+			//控制自身菜单下子菜单隐藏
+			$(this).siblings('ul').children('li').children('ul').slideUp(100);
+
+			//控制同级菜单只保持一个是展开的（-号显示）
+			$(this).siblings('ul').children('li').children('a').removeClass('inactives');
+		}
+	})
+});
+</script>
+
+
+
+
+</head>
+<body class="bodycolor">
+<div class="container">
+	<div class="row">
+		<div class="span12 bgcolor">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3 btn btn-default list">
+	<ul class="yiji">
+		<li><a href="{url arg='admin/index'}">后台管理菜单</a></li>
+		<li><a href="#" class="inactive">文章管理</a>
+			<ul style="display: none">
+				<li class="last"><a href="{url arg='admin/addnew'}">文章添加</a></li> 
+				<li class="last"><a href="{url arg='admin/listnew'}">文章列表</a></li> 
+			</ul>
+		</li>
+		<li><a href="#" class="inactive">组织机构</a>
+			
+		</li>
+	</ul>
+		</div>
+		<div class="col-sm-9 container">
+		<form class="form-horizontal" action="{url arg='admin/dealadd'}" method="post" enctype='multipart/form-data'>
+  <div class="control-group">
+    <label class="control-label" for="articleTitle">标题</label>
+    <div class="controls">
+      <input type="text" name="title" id="articleTitle" placeholder="请输入文章题目">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputContent">文章内容</label>
+    <div class="controls">
+      <textarea name="content" id="inputContent" rows= 10 cols=60 placeholder="Password"></textarea>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputFile">图片</label>
+    <div class="controls">
+      <input type="file" id="inputFile" name="upload1">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">提交</button>
+    </div>
+  </div>
+
+</form>
+		</div>
+	</div>
+</div>
+</body></html>
